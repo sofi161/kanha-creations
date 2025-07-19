@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "./ui/card";
 import CardContent from "./ui/CardContent";
 import Button from "./ui/Button";
+import { CartContext } from "../context/CartContext";
 
 const Products = () => {
+  const { addToCart } = useContext(CartContext);
   const products = [
     {
       id: 1,
@@ -41,7 +43,7 @@ const Products = () => {
             <CardContent className="p-4">
               <h4 className="text-xl font-semibold mb-2">{product.title}</h4>
               <p className="text-gray-700 mb-2">{product.price}</p>
-              <Button className="w-full">Add to Cart</Button>
+              <Button className="w-full" onClick={() => addToCart(product)}>Add to Cart</Button>
             </CardContent>
           </Card>
         ))}
